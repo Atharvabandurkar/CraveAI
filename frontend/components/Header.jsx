@@ -38,6 +38,7 @@
 import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
 import React from 'react'
 import { Button } from "./ui/button";
+import { Cookie, Refrigerator, Sparkles } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -53,6 +54,24 @@ const Header = async () => {
             height={60}
             className="w-16" />
         </Link>
+
+        {/* Navigation Links */}
+        <div className="hidden md:flex items-center space-x-8 text-sm font-medium text-zinc-600">
+          <Link
+            href="/recipes"
+            className="hover:text-primary transition-colors flex gap-1.5 items-center group"
+          >
+            <Cookie className="w-4 h-4 transition-colors group-hover:text-primary" />
+            My Recipes
+          </Link>
+          <Link
+            href="/pantry"
+            className="hover:text-primary transition-colors flex gap-1.5 items-center group"
+          >
+            <Refrigerator className="w-4 h-4 transition-colors group-hover:text-primary" />
+            My Pantry
+          </Link>
+        </div>
 
         {/* Auth Section */}
         <div className="flex items-center space-x-4">
