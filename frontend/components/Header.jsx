@@ -41,6 +41,7 @@ import { Button } from "./ui/button";
 import { Cookie, Refrigerator, Sparkles } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import UserDropdown from "./UserDropdown";
 
 const Header = async () => {
 
@@ -76,13 +77,7 @@ const Header = async () => {
         {/* Auth Section */}
         <div className="flex items-center space-x-4">
           <SignedIn>
-            <UserButton
-              appearance={{
-                elements: {
-                  userButtonAvatarBox: "w-9 h-9 border border-border hover:border-primary transition-colors duration-200"
-                }
-              }}
-            />
+            <UserDropdown />
           </SignedIn>
           <SignedOut>
             <SignInButton mode="modal">
