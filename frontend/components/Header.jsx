@@ -42,10 +42,11 @@ import { Cookie, Refrigerator, Sparkles } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import UserDropdown from "./UserDropdown";
+import { checkUser } from "@/lib/checkUser";
 
 const Header = async () => {
 
-  const user = null; // Replace with actual user fetching logic
+  const user = await checkUser(); // Replace with actual user fetching logic
 
   return (
     <header className="fixed top-0 w-full border-b border-border bg-background/80 backdrop-blur-md z-50">
