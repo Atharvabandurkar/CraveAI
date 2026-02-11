@@ -112,10 +112,12 @@ import {
 } from "@clerk/nextjs";
 import Link from "next/link";
 import Image from "next/image";
-import { Cookie, Refrigerator } from "lucide-react";
+import { Cookie, Refrigerator, Sparkle } from "lucide-react";
 import { Button } from "./ui/button";
 import UserDropdown from "./UserDropdown";
+import { Badge } from "./ui/badge";
 import { checkUser } from "@/lib/checkUser";
+import PricingModal from "./PricingModal";
 
 const Header = async () => {
   const user = await checkUser();
@@ -147,20 +149,41 @@ const Header = async () => {
             className="flex items-center gap-1.5 hover:text-foreground transition-colors"
           >
             <Cookie className="w-4 h-4" />
-            Recipes
+            My Recipes
           </Link>
           <Link
             href="/pantry"
             className="flex items-center gap-1.5 hover:text-foreground transition-colors"
           >
             <Refrigerator className="w-4 h-4" />
-            Pantry
+            My Pantry
           </Link>
         </div>
 
         {/* Auth */}
         <div className="flex items-center gap-2">
           <SignedIn>
+            {user && (
+              <PricingModal subscriptionTier={user.subscriptionTier}>
+                <Badge
+                  variant="outline"
+                  className={`flex h-8 px-3 gap-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${user.subscriptionTier === "pro"
+                      ? "bg-linear-to-r from-emerald-600 to-cyan-500 text-white border-none shadow-md shadow-emerald-500/20 hover:scale-105"
+                      : "bg-zinc-200/50 text-zinc-600 border-zinc-200 hover:bg-zinc-200 hover:border-zinc-300"
+                    }`}
+                >
+                  <Sparkle
+                    className={`h-3.5 w-3.5 ${user.subscriptionTier === "pro"
+                        ? "text-white fill-white/30 animate-pulse"
+                        : "text-zinc-500"
+                      }`}
+                  />
+                  <span>
+                    {user.subscriptionTier === "pro" ? "Pro Chef" : "Free Plan"}
+                  </span>
+                </Badge>
+              </PricingModal>
+            )}
             <UserDropdown />
           </SignedIn>
 
