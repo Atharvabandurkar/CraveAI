@@ -98,9 +98,9 @@ export default async function DashboardPage() {
                       {recipeOfTheDay.strInstructions?.substring(0, 200)}...
                     </p>
 
-                    <Button 
-                      variant="primary" 
-                      size="lg" 
+                    <Button
+                      variant="primary"
+                      size="lg"
                       className="w-fit px-8"
                     >
                       Start Cooking <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
@@ -130,7 +130,7 @@ export default async function DashboardPage() {
                 href={`/recipes/category/${category.strCategory.toLowerCase()}`}
               >
                 <div className="bg-card p-6 border border-border rounded-2xl hover:border-primary/50 hover:bg-primary/5 hover:shadow-xl hover:shadow-primary/5 transition-all text-center group cursor-pointer">
-                  <div className="text-4xl mb-3 filter grayscale group-hover:grayscale-0 transition-all duration-300 transform group-hover:scale-110">
+                  <div className="text-4xl mb-3 transition-all duration-300 transform group-hover:scale-110">
                     {getCategoryEmoji(category.strCategory)}
                   </div>
                   <h3 className="font-bold text-foreground group-hover:text-primary transition-colors text-sm">
@@ -154,25 +154,27 @@ export default async function DashboardPage() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {areas.map((area) => (
-              <Link
-                key={area.strArea}
-                href={`/recipes/cuisine/${area.strArea
-                  .toLowerCase()
-                  .replace(/\s+/g, "-")}`}
-              >
-                <div className="bg-muted/50 p-5 border border-border rounded-xl hover:border-primary/50 hover:bg-background hover:shadow-lg transition-all group cursor-pointer">
-                  <div className="flex items-center gap-3">
-                    <span className="text-3xl group-hover:scale-110 transition-transform">
-                      {getCountryFlag(area.strArea)}
-                    </span>
-                    <span className="font-bold text-foreground group-hover:text-primary transition-colors text-sm">
-                      {area.strArea}
-                    </span>
+            {areas
+              .filter((area) => getCountryFlag(area.strArea) !== "🌍")
+              .map((area) => (
+                <Link
+                  key={area.strArea}
+                  href={`/recipes/cuisine/${area.strArea
+                    .toLowerCase()
+                    .replace(/\s+/g, "-")}`}
+                >
+                  <div className="bg-muted/50 p-5 border border-border rounded-xl hover:border-primary/50 hover:bg-background hover:shadow-lg transition-all group cursor-pointer">
+                    <div className="flex items-center gap-3">
+                      <span className="text-3xl group-hover:scale-110 transition-transform">
+                        {getCountryFlag(area.strArea)}
+                      </span>
+                      <span className="font-bold text-foreground group-hover:text-primary transition-colors text-sm">
+                        {area.strArea}
+                      </span>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              ))}
           </div>
         </section>
       </div>

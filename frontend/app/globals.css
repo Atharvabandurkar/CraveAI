@@ -278,86 +278,86 @@
   }
 } */
 
-@import "tailwindcss";
+/* @import "tailwindcss"; */
 
-@custom-variant dark (&:is(.dark *));
+/* @custom-variant dark (&:is(.dark *)); */
 
-@theme {
+/* @theme {
   /* System Fonts */
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono); */
 
   /* Layout Neutrals (Zinc) */
-  --color-background: var(--background);
+  /* --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
+  --color-popover-foreground: var(--popover-foreground); */
   
   /* Primary Action (Emerald/Mint) */
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
+  /* --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground); */
 
   /* AI & Highlights (Cyan) */
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
+  /* --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground); */
 
   /* Interface Elements */
-  --color-muted: var(--muted);
+  /* --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
-  --color-ring: var(--ring);
+  --color-ring: var(--ring); */
 
   /* Radius System */
-  --radius-lg: var(--radius);
+  /* --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
-  --radius-sm: calc(var(--radius) - 4px);
-}
+  --radius-sm: calc(var(--radius) - 4px); */
+/* } */
 
-:root {
+/* :root { */
   /* Zinc-50 Background & Zinc-900 Text */
-  --background: 240 5% 96%;
+  /* --background: 240 5% 96%;
   --foreground: 240 10% 3.9%;
   
   --card: 0 0% 100%;
   --card-foreground: 240 10% 3.9%;
 
   --popover: 0 0% 100%;
-  --popover-foreground: 240 10% 3.9%;
+  --popover-foreground: 240 10% 3.9%; */
   
   /* Primary: Emerald-600 */
-  --primary: 160 84% 39%;
-  --primary-foreground: 0 0% 98%;
+  /* --primary: 160 84% 39%;
+  --primary-foreground: 0 0% 98%; */
 
   /* Accent: Cyan-500 */
-  --accent: 188 86% 53%;
-  --accent-foreground: 0 0% 98%;
+  /* --accent: 188 86% 53%;
+  --accent-foreground: 0 0% 98%; */
 
   /* Muted & Borders: Zinc-200/500 */
-  --muted: 240 5% 96%;
+  /* --muted: 240 5% 96%;
   --muted-foreground: 240 4% 46%;
   --border: 240 6% 90%;
   --input: 240 6% 90%;
   --ring: 160 84% 39%;
   
-  --radius: 0.625rem;
-}
+  --radius: 0.625rem; */
+/* } */
 
-.dark {
+/* .dark { */
   /* Zinc-950 Background & Zinc-50 Text */
-  --background: 240 10% 3.9%;
+  /* --background: 240 10% 3.9%;
   --foreground: 0 0% 98%;
   
   --card: 240 10% 3.9%;
   --card-foreground: 0 0% 98%;
 
   --popover: 240 10% 3.9%;
-  --popover-foreground: 0 0% 98%;
+  --popover-foreground: 0 0% 98%; */
   
   /* primary Emerald slightly adjusted for Dark Mode visibility */
-  --primary: 160 84% 45%;
+  /* --primary: 160 84% 45%;
   --primary-foreground: 240 10% 3.9%;
 
   --accent: 188 86% 53%;
@@ -367,6 +367,122 @@
   --muted-foreground: 240 5% 65%;
   --border: 240 4% 16%;
   --input: 240 4% 16%;
+  --ring: 160 84% 45%; */
+/* } */
+
+/* @layer base {
+  * {
+    @apply border-border outline-ring/50 transition-colors duration-200;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+} */
+
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  /* Fonts */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* Theme Colors */
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  /* Radius */
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
+
+:root {
+  /* Background & Foreground */
+  --background: 240 5% 96%;
+  --foreground: 240 10% 3.9%;
+
+  /* Card */
+  --card: 0 0% 100%;
+  --card-foreground: 240 10% 3.9%;
+
+  /* Popover */
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 10% 3.9%;
+
+  /* Primary (Mint/Emerald) */
+  --primary: 160 84% 39%;
+  --primary-foreground: 0 0% 98%;
+
+  /* Accent (AI Cyan) */
+  --accent: 188 86% 53%;
+  --accent-foreground: 0 0% 98%;
+
+  /* Muted */
+  --muted: 240 5% 96%;
+  --muted-foreground: 240 4% 46%;
+
+  /* Borders/Input */
+  --border: 240 6% 90%;
+  --input: 240 6% 90%;
+
+  /* Ring */
+  --ring: 160 84% 39%;
+
+  /* Radius */
+  --radius: 0.75rem;
+}
+
+.dark {
+  /* Background & Foreground */
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+
+  /* Card */
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+
+  /* Popover */
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+
+  /* Primary */
+  --primary: 160 84% 45%;
+  --primary-foreground: 240 10% 3.9%;
+
+  /* Accent */
+  --accent: 188 86% 53%;
+  --accent-foreground: 240 10% 3.9%;
+
+  /* Muted */
+  --muted: 240 4% 16%;
+  --muted-foreground: 240 5% 65%;
+
+  /* Borders/Input */
+  --border: 240 4% 16%;
+  --input: 240 4% 16%;
+
+  /* Ring */
   --ring: 160 84% 45%;
 }
 
@@ -374,6 +490,7 @@
   * {
     @apply border-border outline-ring/50 transition-colors duration-200;
   }
+
   body {
     @apply bg-background text-foreground antialiased;
   }
