@@ -32,19 +32,21 @@ export default function RecipeCard({ recipe }) {
     <Link href={href} className="h-full block">
       <Card className="h-full flex flex-col justify-between rounded-2xl border-border bg-card hover:border-primary/50 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 cursor-pointer overflow-hidden py-0 group">
         <div>
-          {/* Recipe Image or Fallback */}
+          {/* Recipe Image Container with Fixed Aspect Ratio */}
           {image ? (
-            <div className="relative aspect-video w-full overflow-hidden bg-muted">
+            <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted/30">
               <Image
                 src={image}
                 alt={title}
                 fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
+              {/* Subtle Gradient Overlay to make the image pop and blend nicely */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
             </div>
           ) : (
-            <div className="relative aspect-video w-full bg-linear-to-br from-emerald-500 to-cyan-500 flex items-center justify-center">
+            <div className="relative aspect-[4/3] w-full bg-linear-to-br from-emerald-500 to-cyan-500 flex items-center justify-center">
               <ChefHat className="w-12 h-12 text-white/50" />
             </div>
           )}
@@ -82,7 +84,7 @@ export default function RecipeCard({ recipe }) {
           </CardHeader>
         </div>
 
-        {/* Metadata Footer: Time, Servings & Date */}
+        {/* Metadata Footer */}
         {(prepTime || cookTime || servings || formattedDate) && (
           <CardContent className="pb-5 pt-0">
             <div className="flex flex-wrap items-center gap-4 text-xs text-muted-foreground border-t border-border/60 pt-3">
