@@ -237,7 +237,7 @@ const Header = async () => {
         >
           <div className="relative w-9 h-9 overflow-hidden rounded-lg border border-primary/20 shadow-sm">
              <Image
-              src="/logo.png"
+              src="/logo1.png"
               alt="CraveAI Logo"
               fill
               className="object-cover"
