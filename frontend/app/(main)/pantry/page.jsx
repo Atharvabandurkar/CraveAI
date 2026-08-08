@@ -1,20 +1,35 @@
 "use client";
 
-import React from "react";
+import { Package, Plus } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
-const PantryPage = () => {
+export default function PantryPage() {
   return (
-    <div className="min-h-screen bg-stone-50 pt-24 pb-16 px-4">
-      <div className="container mx-auto max-w-5xl">
-        <h1 className="text-3xl font-bold mb-6">Pantry Page</h1>
-
-        {/* Your pantry content goes here */}
-        <div className="bg-white rounded-lg shadow p-6">
-          Pantry content
-        </div>
-      </div>
+    <div className="mt-12 flex items-center justify-center gap-109">
+  <div className="flex items-center gap-4">
+    <div
+      className="p-4 rounded-xl"
+      style={{ backgroundColor: "#10B98120" }}
+    >
+      <Package size={40} style={{ color: "#10B981" }} />
     </div>
-  );
-};
 
-export default PantryPage;
+    <h1
+      className="text-4xl font-bold"
+      style={{ color: "#18181B" }}
+    >
+      My Pantry
+    </h1>
+  </div>
+
+  <Button
+    onClick={() => setIsModalOpen(true)}
+    className="bg-[#10B981] hover:bg-[#059669] text-white gap-2"
+    size="lg"
+  >
+    <Plus className="w-5 h-5" />
+    Add to Pantry
+  </Button>
+</div>
+  );
+}
